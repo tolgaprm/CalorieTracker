@@ -1,4 +1,4 @@
-package com.prmto.core_ui
+package com.plcoding.core_ui
 
 import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.ui.unit.Dp

@@ -14,7 +14,7 @@ import com.plcoding.core.R
 import com.plcoding.core.navigation.Route
 import com.plcoding.core.util.UiEvent
 import com.plcoding.onboarding_presentation.components.ActionButton
-import com.prmto.core_ui.LocalSpacing
+import com.plcoding.core_ui.LocalSpacing
 
 @Composable
 fun WelcomeScreen(
