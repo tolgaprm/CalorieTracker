@@ -17,6 +17,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.plcoding.calorytracker.navigation.navigate
 import com.plcoding.calorytracker.ui.theme.CaloryTrackerTheme
+import com.plcoding.core.domain.preferences.Preferences
 import com.plcoding.core.navigation.Route
 import com.plcoding.onboarding_presentation.activity.ActivityScreen
 import com.plcoding.onboarding_presentation.age.AgeScreen
@@ -29,13 +30,22 @@ import com.plcoding.onboarding_presentation.welcome.WelcomeScreen
 import com.plcoding.tracker_presenatiton.search.SearchScreen
 import com.plcoding.tracker_presenatiton.tracker_overview.TrackerOverviewScreen
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+
+    @Inject
+    lateinit var preferences: Preferences
+
+
     @OptIn(ExperimentalComposeUiApi::class)
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val shouldShowOnBoarding = preferences.loadShouldShowOnboarding()
         setContent {
             CaloryTrackerTheme {
                 val navController = rememberNavController()
@@ -47,7 +57,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     NavHost(
                         navController = navController,
-                        startDestination = Route.WELCOME
+                        startDestination = if (shouldShowOnBoarding) Route.WELCOME else Route.TRACKER_OVERVIEW
                     ) {
                         composable(Route.WELCOME) {
                             WelcomeScreen(
@@ -117,7 +127,7 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
                             val mealName = it.arguments?.getString("mealName")!!
-                            val dayOfMoth = it.arguments?.getInt("getOfMonth")!!
+                            val dayOfMoth = it.arguments?.getInt("dayOfMonth")!!
                             val month = it.arguments?.getInt("month")!!
                             val year = it.arguments?.getInt("year")!!
                             SearchScreen(
