@@ -17,11 +17,10 @@ import com.plcoding.core.R
 import com.plcoding.core.domain.model.Gender
 import com.plcoding.onboarding_presentation.components.ActionButton
 import com.plcoding.onboarding_presentation.components.SelectableButton
-import kotlinx.coroutines.flow.collect
 
 @Composable
 fun GenderScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: GenderViewModel = hiltViewModel(),
 ) {
     val spacing = LocalSpacing.current
@@ -29,7 +28,7 @@ fun GenderScreen(
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
             }
         }
