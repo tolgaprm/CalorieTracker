@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusState
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -37,7 +38,7 @@ fun SearchTextField(
     modifier: Modifier = Modifier,
     hint: String = stringResource(id = R.string.search),
     shouldShowHint: Boolean = false,
-    onFocusChanged: (FocusState) -> Unit
+    onFocusChanged: (FocusState) -> Unit,
 ) {
     val spacing = LocalSpacing.current
     Box(
@@ -68,8 +69,9 @@ fun SearchTextField(
                 .padding(spacing.spaceMedium)
                 .padding(end = spacing.spaceMedium)
                 .onFocusChanged { onFocusChanged(it) }
+                .testTag("search_textfield")
         )
-        if(shouldShowHint) {
+        if (shouldShowHint) {
             Text(
                 text = hint,
                 style = MaterialTheme.typography.body1,
