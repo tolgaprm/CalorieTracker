@@ -67,8 +67,6 @@ p
 @app/src/main/java/com/plcoding/calorytracker/navigation/Route.kt,5/1/51f49308aa5d577401e841d35d108d2778c4396a
 ¥
 utracker/tracker_presentation/src/main/java/com/plcoding/tracker_presenatiton/tracker_overview/TrackerOverviewEvent.kt,b/b/bba8100cfca4b01d1c0f6c66085521b14e2f8f34
-¦
-vtracker/tracker_presentation/src/main/java/com/plcoding/tracker_presenatiton/tracker_overview/TrackerOverviewScreen.kt,5/e/5e2284630e03c64653d0156b826d77e97182ce99
 Ÿ
 otracker/tracker_presentation/src/main/java/com/plcoding/tracker_presenatiton/tracker_overview/TrackViewModel.kt,2/3/230c3431574e00663928efdc4200c1f233ab3458
 d
